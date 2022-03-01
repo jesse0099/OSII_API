@@ -25,6 +25,7 @@ public class UsuarioController {
 
     @GetMapping(value = "/{id}")
     public Usuario getUser(@PathVariable Long id) {
+        System.out.println("RECOMPILE");
         return RestPreconditions.checkFound(service.get(id));
     }
 
