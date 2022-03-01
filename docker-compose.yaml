@@ -9,7 +9,7 @@ services:
 #la URL del datasource como tal.
   spring_api:
     container_name: api_instance1
-    image: api:slim_alpine_JDK8
+    image: jese69/OSII_API
     ports:
       - 8081:8080
     depends_on:
@@ -21,7 +21,7 @@ services:
 
   spring_api2:
     container_name: api_instance2
-    image: api:slim_alpine_JDK8
+    image: jese69/OSII_API
     ports:
       - 8083:8080
     depends_on:
@@ -40,7 +40,7 @@ services:
 # Tutorial de referencia: https://stackoverflow.com/questions/38504257/mysql-scripts-in-docker-entrypoint-initdb-are-not-executed/52715521
   mysql:
     container_name: mysql_spring
-    image: mysql:5.7
+    image: jese69/mysql:5.7
     ports:
       - 3307:3306
     volumes: 
