@@ -22,6 +22,7 @@ public class DummyController {
     @PermitAll
     @GetMapping
     public List<Dummy> getDummies(){
+        System.out.println("DEFINITIVA");
         return RestPreconditions.checkFound(service.get());
     }
 
