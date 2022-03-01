@@ -12,7 +12,7 @@ jobs:
         fingerprint: 
         - "c9:2a:56:ee:a0:fa:63:c7:5d:f5:1f:24:9e:e5:52:59"
     - checkout
-    - run: docker login -u $DOCKER_HOST -p $DOCKER_PASS
+    - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
     - run: docker build -t jese69/OSII_API:$CIRCLE_SHA1 .
     - run: docker push jese69/OSII_API:$CIRCLE_SHA1
     - run: ssh -o StrictHostKeyChecking=no JeseAzure@23.101.180.53 "/bin/bash /root/docker/deploy.sh $CIRCLE_SHA1"
