@@ -22,7 +22,7 @@ public class DummyController {
     @PermitAll
     @GetMapping
     public List<Dummy> getDummies(){
-        return RestPreconditions.checkFound(service.get());
+        return service.get();
     }
 
     @PermitAll
