@@ -15,5 +15,5 @@ jobs:
     - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
     - run: docker build -t jese69/os2_api:$CIRCLE_SHA1 .
     - run: docker push jese69/os2_api:$CIRCLE_SHA1
-    - run: ssh -o StrictHostKeyChecking=no JeseAzure@23.101.180.53 "/bin/bash /root/docker/deploy.sh $CIRCLE_SHA1"
+    - run: ssh -o StrictHostKeyChecking=no JeseAzure@23.101.180.53 "/bin/bash /docker/deploy.sh $CIRCLE_SHA1"
 
