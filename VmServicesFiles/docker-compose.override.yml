@@ -1,0 +1,6 @@
+version: '3.7'
+services:
+ spring_api:
+  image: jese69/os2_api:17c2bfbbb941f82e8778b08d95f6e62b2fe386e5
+ spring_api2:
+  image: jese69/os2_api:17c2bfbbb941f82e8778b08d95f6e62b2fe386e5
