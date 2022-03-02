@@ -46,7 +46,7 @@ services:
     volumes: 
       - ./container_data:/var/lib/mysql
       - ./init:/docker-entrypoint-initdb.d/:ro
-    restart: on-failure
+    restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=1234
       - MYSQL_DATABASE=springsp
