@@ -1,4 +1,4 @@
-#Building Stage   [Maven Alpine based image]
+#Building Stage     [Maven Alpine based image]
 FROM maven:3.8.2-jdk-8-slim AS MAVEN_BUILD
 
 #Para que sepan el nombre del manco
