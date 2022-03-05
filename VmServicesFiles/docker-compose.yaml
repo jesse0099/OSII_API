@@ -10,10 +10,7 @@ services:
 # Tutorial de referencia: https://stackoverflow.com/questions/38504257/mysql-scripts-in-docker-entrypoint-initdb-are-not-executed/52715521
 
   mysql:
-    networks:
-      - swarm_mode 
     hostname: mysql
-    container_name: mysql_spring
     image: jese69/mysql:5.7
     expose:
       - 3306
@@ -34,13 +31,10 @@ services:
   spring_api:
     links:
       - mysql
-    networks:
-      - swarm_mode 
     deploy:
       mode: global
       placement:
         constraints: [node.role == worker]
-    container_name: api_instance1
     image: jese69/os2_api:2bac9195405223411d691ef8b822dd6e9b654264
     ports:
       - 8080:8080/tcp
@@ -50,8 +44,4 @@ services:
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/springsp?serverTimezone=UTC
       - SECURITY_JWT_TTLMILLIS=300000
-      
-networks:
-  swarm_mode:
-    external: true
       
