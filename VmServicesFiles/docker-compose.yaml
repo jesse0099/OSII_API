@@ -12,8 +12,8 @@ services:
   mysql:
     hostname: mysql
     image: jese69/mysql:5.7
-    expose:
-      - 3306
+    ports:
+      - "3306:3306"
     volumes: 
       - ./container_data:/var/lib/mysql
       - ./init:/docker-entrypoint-initdb.d/:ro
