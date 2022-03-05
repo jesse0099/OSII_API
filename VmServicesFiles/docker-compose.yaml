@@ -24,7 +24,6 @@ services:
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/springsp?serverTimezone=UTC
       - SECURITY_JWT_TTLMILLIS=300000
-      - LOGGING_FILE=log.txt
       
 
 # docker-entrypoint-initdb.d Ejecuta los scripts .sh o .sql que se le pasen
@@ -38,8 +37,8 @@ services:
       - swarm_mode 
     container_name: mysql_spring
     image: jese69/mysql:5.7
-    ports:
-      - 3306:3306
+    expose:
+      - 3306
     volumes: 
       - ./container_data:/var/lib/mysql
       - ./init:/docker-entrypoint-initdb.d/:ro
