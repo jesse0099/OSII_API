@@ -48,4 +48,5 @@ services:
       
 networks:
   swarm_mode:
+    external: true
       
