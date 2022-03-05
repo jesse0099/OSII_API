@@ -1,5 +1,9 @@
 version: "3.7"
 
+networks:
+  swarm_mode:
+
+
 services:
 
 #Instancias del Servicio
@@ -8,28 +12,19 @@ services:
 #por lo que es seguro y recomendable pasar
 #la URL del datasource como tal.
   spring_api:
+    networks:
+      - swarm_mode 
     container_name: api_instance1
-    image: jese69/os2_api
+    image: jese69/os2_api:2bac9195405223411d691ef8b822dd6e9b654264
     ports:
-      - 8081:8080
+      - 8080:8080
     depends_on:
       - mysql
     restart: on-failure
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/springsp?serverTimezone=UTC
       - SECURITY_JWT_TTLMILLIS=300000
-
-  spring_api2:
-    container_name: api_instance2
-    image: jese69/os2_api
-    ports:
-      - 8083:8080
-    depends_on:
-      - mysql
-    restart: on-failure
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/springsp?serverTimezone=UTC
-      - SECURITY_JWT_TTLMILLIS=300000
+      - LOGGING_FILE=log.txt
       
 
 # docker-entrypoint-initdb.d Ejecuta los scripts .sh o .sql que se le pasen
@@ -39,10 +34,12 @@ services:
 # de inicializacion que lo elimine y ejecute docker-compose up --force-recreate.
 # Tutorial de referencia: https://stackoverflow.com/questions/38504257/mysql-scripts-in-docker-entrypoint-initdb-are-not-executed/52715521
   mysql:
+    networks:
+      - swarm_mode 
     container_name: mysql_spring
     image: jese69/mysql:5.7
     ports:
-      - 3307:3306
+      - 3306:3306
     volumes: 
       - ./container_data:/var/lib/mysql
       - ./init:/docker-entrypoint-initdb.d/:ro
