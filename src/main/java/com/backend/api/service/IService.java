@@ -1,10 +1,6 @@
 package com.backend.api.service;
 
-import java.util.List;
+import com.backend.api.dao.IDao;
 
-public interface IService <T> {
-    List<T> get();
-    T get(Long T);
-    void delete(Long id);
-    void create(T t);
+public interface IService <T> extends IDao<T> {
 }

@@ -17,7 +17,6 @@ services:
     volumes: 
       - ./container_data:/var/lib/mysql
       - ./init:/docker-entrypoint-initdb.d/:ro
-    restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=1234
       - MYSQL_DATABASE=springsp
@@ -29,18 +28,11 @@ services:
 #la URL del datasource como tal.
 
   spring_api:
-    links:
-      - mysql
-    deploy:
-      mode: global
-      placement:
-        constraints: [node.role == worker]
     image: jese69/os2_api:2bac9195405223411d691ef8b822dd6e9b654264
     ports:
-      - 8080:8080/tcp
+      - "8080:8080"
     depends_on:
       - mysql
-    restart: on-failure
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/springsp?serverTimezone=UTC
       - SECURITY_JWT_TTLMILLIS=300000

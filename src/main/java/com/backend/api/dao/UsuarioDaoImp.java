@@ -1,10 +1,7 @@
 package com.backend.api.dao;
 
 import com.backend.api.models.jpa.Usuario;
-import org.springframework.security.authentication.UserDetailsRepositoryReactiveAuthenticationManager;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.hibernate.cfg.NotYetImplementedException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -39,6 +36,26 @@ public class UsuarioDaoImp implements IDao<Usuario> {
     @Override
     public void create(Usuario usuario) {
         entityManager.persist(usuario);
+    }
+
+    @Override
+    public void deleteByParam(String uniqueParam) {
+
+    }
+
+    @Override
+    public boolean exists(String uniqueParam) {
+        return false;
+    }
+
+    @Override
+    public int countByParam(String param) {
+        return -1;
+    }
+
+    @Override
+    public Usuario objByUniqueParam(String uniqueParam) {
+        throw  new NotYetImplementedException("Implementación Pendiente");
     }
 
     public Usuario userByEmail(String usermail) {

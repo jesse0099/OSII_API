@@ -7,4 +7,8 @@ public interface IDao<T> {
     T get(Long id);
     void delete(Long id);
     void create(T t);
+    void deleteByParam(String uniqueParam);
+    boolean exists(String uniqueParam);
+    int countByParam(String param);
+    T objByUniqueParam(String uniqueParam);
 }

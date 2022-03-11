@@ -3,7 +3,6 @@ package com.backend.api.controllers;
 
 import com.backend.api.models.jpa.Usuario;
 import com.backend.api.service.IService;
-import com.backend.api.utils.JWTUtil;
 import com.backend.api.utils.RestPreconditions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -25,7 +24,6 @@ public class UsuarioController {
 
     @GetMapping(value = "/{id}")
     public Usuario getUser(@PathVariable Long id) {
-        System.out.println("RECOMPILE");
         return RestPreconditions.checkFound(service.get(id));
     }
 

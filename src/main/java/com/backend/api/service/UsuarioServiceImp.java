@@ -7,6 +7,7 @@ import com.backend.api.models.generics.MyUserDetails;
 import com.backend.api.models.jpa.Usuario;
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
+import org.hibernate.cfg.NotYetImplementedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -45,6 +46,26 @@ public class UsuarioServiceImp implements IService<Usuario>, UserDetailsService 
         String passHashed = argon2.hash(1,1024,1, usuario.getPassword());
         usuario.setPassword(passHashed);
         dao.create(usuario);
+    }
+
+    @Override
+    public void deleteByParam(String uniqueParam) {
+
+    }
+
+    @Override
+    public boolean exists(String uniqueParam) {
+        return false;
+    }
+
+    @Override
+    public int countByParam(String param) {
+        return 0;
+    }
+
+    @Override
+    public Usuario objByUniqueParam(String uniqueParam) {
+        return dao.objByUniqueParam(uniqueParam);
     }
 
     @Override

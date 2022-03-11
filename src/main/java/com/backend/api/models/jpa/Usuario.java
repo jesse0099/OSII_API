@@ -1,21 +1,13 @@
 package com.backend.api.models.jpa;
 
 
-
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
+
 
 @Entity
 @Table(name = "usuarios")
@@ -24,7 +16,8 @@ import java.util.stream.Collectors;
         ,@NamedQuery(name= "Usuario.checkEmail", query="SELECT u FROM Usuario u WHERE u.email = :emailParam")
         ,@NamedQuery(name= "Usuario.getById", query="SELECT u FROM Usuario u WHERE u.id = :idParam")
 })
-@ToString @EqualsAndHashCode
+@ToString
+@EqualsAndHashCode
 public class Usuario implements Serializable {
 
     @Id
@@ -53,5 +46,4 @@ public class Usuario implements Serializable {
 
     @Getter @Setter @Column(name = "active")
     private Boolean active;
-
 }

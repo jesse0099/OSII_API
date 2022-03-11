@@ -1,6 +1,7 @@
 package com.backend.api.dao;
 
 import com.backend.api.models.jpa.Dummy;
+import org.hibernate.cfg.NotYetImplementedException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,6 +29,26 @@ public class DummyDaoImp implements IDao<Dummy> {
     @Override
     public void create(Dummy dummy) {
         entityManager.persist(dummy);
+    }
+
+    @Override
+    public void deleteByParam(String uniqueParam) {
+
+    }
+
+    @Override
+    public boolean exists(String uniqueParam) {
+        return false;
+    }
+
+    @Override
+    public int countByParam(String param) {
+        return -1;
+    }
+
+    @Override
+    public Dummy objByUniqueParam(String uniqueParam) {
+        throw  new NotYetImplementedException("Implementación Pendiente");
     }
 
     @Override
